@@ -13,7 +13,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://todo-list-backend-sand.vercel.app"
+      "https://todo-list-frontend-lovat.vercel.app/"
     ],
     credentials: true,
   })
