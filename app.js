@@ -1,13 +1,26 @@
 import express from 'express';
 import connectDB from './Db/Db.connection.js';
+import router from './router/copyData.router.js';
+import cors from 'cors';
+
 const PORT = process.env.PORT || 5000;
-import router from './router/copyData.router.js'
-import cors from 'cors'
-connectDB()
+
+connectDB();
+
 const app = express();
+
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors())
+
+// Home route
+app.get('/', (req, res) => {
+    res.status(200).json({
+        success: true,
+        message: 'Server is running successfully'
+    });
+});
+
 app.use('/api', router);
 
 app.listen(PORT, () => {
